@@ -5,11 +5,11 @@ router.get('/', function(req, res){
     res.render('home');
 });
 
-router.get('/signup', function(req, res){
-    res.render('signup');
+router.get('/register', function(req, res){
+    res.render('register');
 });
 
-router.post('/signup', function(req, res){
+router.post('/register', function(req, res){
     
 });
 
