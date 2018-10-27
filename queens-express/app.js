@@ -20,6 +20,6 @@ app.get('/', function(req, res){
     res.render('home');
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(8000, process.env.IP, function(){
    console.log("Queens Mentor has started."); 
 });
