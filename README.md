@@ -10,5 +10,5 @@ This is the application for Queens College Hackattack 2018.
 # HOW TO EJS
     create new html files with .ejs extension
     express will read files from the views directory and .ejs ending does not need to be added when routing
-    allows us to include embedded javascript in our html
+    allows us to include embedded javascript in our html.
     
