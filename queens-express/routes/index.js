@@ -202,4 +202,15 @@ router.get('/chat', function(req, res){
     res.render('mockup');
 });
 
+router.post('/new-bucket', function(req, res){
+   Mentee.findOne({ username: req.user.username }, function(err, foundMentee){
+       if(err){
+           console.log(err);
+       } else {
+           foundMentee.bucketList.push(req.body.bucket);
+           res.render("menteeLand", {mentee: foundMentee});
+       }
+   }) ;
+});
+
 module.exports = router;
