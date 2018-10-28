@@ -11,12 +11,13 @@ const express         = require('express'),
 let port = process.env.PORT || 8000,
     indexRoutes = require('./routes/index');
     
-let url = process.env.DATABASEURL || "mongodb://" + process.env.IP + "/the_black_code"
-// let url = "mongodb://jsurena:jean18@ds111993.mlab.com:11993/the_black_code";
+let url = 'mongodb://localhost:27017' + '/mentor_queen';
+
+const dbName = 'myproject';
 mongoose.connect(url, { useNewUrlParser: true });
 var db = mongoose.connection;
 
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", console.error.bind(console, "connection error:"), console.log("This is the url: " + url));
 db.once("open", function(){
     console.log("Database connectivity established.");
 });
