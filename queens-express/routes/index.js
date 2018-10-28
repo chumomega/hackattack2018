@@ -15,7 +15,7 @@ router.get('/aboutus', function(req, res){
 });
 
 router.get('/theland', middleware.isLoggedIn, function(req, res){
-    User.findOne({ id: req.user._id }, function(err, foundUser){
+    User.findOne({ _id: req.user._id }, function(err, foundUser){
         if(err){
             console.log(err);
         } else {
