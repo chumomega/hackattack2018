@@ -135,4 +135,8 @@ router.get('/menteehome', function(req, res){
     res.render('');
 });
 
+router.get('/chat', function(req, res){
+    res.render('mockup');
+});
+
 module.exports = router;
