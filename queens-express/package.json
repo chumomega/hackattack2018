@@ -16,13 +16,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "method-override": "^3.0.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     "mongodb": "^3.1.8",
->>>>>>> e41c1aad5e36a089d029a2057980b0b58217c564
-=======
->>>>>>> feature/mongo
     "mongoose": "^5.3.7",
     "nodemon": "^1.18.5",
     "passport": "^0.4.0",
