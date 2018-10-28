@@ -25,6 +25,6 @@ let menteeSchema = mongoose.Schema({
    ],
 });
 
-let Mentee = mongoose.model("Mentor", menteeSchema);
+let Mentee = mongoose.model("Mentee", menteeSchema);
 
 module.exports = Mentee;

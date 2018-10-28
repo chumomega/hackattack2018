@@ -12,27 +12,37 @@
   </head>
   <body>
       <h1 style="margin-bottom: 50px">Register for the MentorQueens application</h1>
-    <form>
+    <form action="/register" method="POST">
         <div class="form-group">
-          <label for="exampleInputEmail1">Name</label>
-          <input type="email" class="form-control" id="exampleName" aria-describedby="emailHelp" placeholder="Enter your full name">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter your full name" required>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
         </div>
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>Mentor</option>
-            <option>Mentee</option>
-        </select>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city" placeholder="Enter your city" required>
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" name="state" id="state" placeholder="Enter your state" maxlength="2" required>
+        </div>
+        <div class="form-group">
+          <label for="role">Select your role:</label>
+          <select class="form-control" name="role" id="role">
+              <option value="Mentor">Mentor</option>
+              <option value="Mentee">Mentee</option>
+          </select>
+        </div>
  
-        <button type="submit" class="btn btn-primary" onclick="addUser()">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
       </form>
 
     <!-- Optional JavaScript -->

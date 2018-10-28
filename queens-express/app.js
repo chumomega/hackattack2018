@@ -6,13 +6,12 @@ const express         = require('express'),
       passport        = require('passport'),
       mongoose        = require('mongoose'),
       localStrategy   = require('passport-local'),
-      User            = require('./models/user');
+      User            = require('./models/user'),
+      indexRoutes     = require('./routes/index');
       
-let port = process.env.PORT || 8000,
-    indexRoutes = require('./routes/index');
+let port = process.env.PORT || 8000;
     
-let url = process.env.DATABASEURL || "mongodb://" + process.env.IP + "/the_black_code"
-// let url = "mongodb://jsurena:jean18@ds111993.mlab.com:11993/the_black_code";
+let url = process.env.DATABASEURL || "mongodb://" + process.env.IP + "/mentor_queens"
 mongoose.connect(url, { useNewUrlParser: true });
 var db = mongoose.connection;
 
@@ -38,16 +37,12 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
+
 app.use(indexRoutes);
-
-
-function addUser(){
-
-}
-
-function loginUser(){
-
-}
 
 app.listen(port, process.env.IP, function(){
    console.log('Queens Mentor has started.'); 
