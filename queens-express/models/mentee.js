@@ -1,24 +1,29 @@
-const mongoose = require('mongoose'),
-      passportLocalMongoose = require("passport-local-mongoose");
+const mongoose = require('mongoose');
       
 let menteeSchema = mongoose.Schema({
-   name: String,
-   email: String,
-   password: String,
-   city: String,
-   state: String,
-   biography: String,
+    user: {
+      id: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "User"
+      },
+      username: String
+   },
    goal1: String,
    goal2: String,
    goal3: String,
-   bucketList: String,
+   bucketList: [
+       {
+           listItem: String,
+       }
+       ],
    numMentors: Number,
-   mentor1: String,
-   mentor2: String,
-   mentor3: String,
+   mentors: [
+       {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Mentor"
+       }
+   ],
 });
-
-menteeSchema.plugin(passportLocalMongoose);
 
 let Mentee = mongoose.model("Mentor", menteeSchema);
 
