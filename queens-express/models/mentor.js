@@ -8,6 +8,7 @@ let mentorSchema = mongoose.Schema({
       },
       username: String
    },
+   username: String,
    accomplishment1: String,
    accomplishment2: String,
    accomplishment3: String,

@@ -14,13 +14,66 @@ router.get('/aboutus', function(req, res){
     res.render('aboutus');
 });
 
-router.get('/mentorland', middleware.isLoggedIn, function(req, res){
-    Mentor.findById(req.user._id, )
-    res.render('mentorLand');
+router.get('/theland', middleware.isLoggedIn, function(req, res){
+    User.findOne({ id: req.user._id }, function(err, foundUser){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(req.user._id);
+            console.log(foundUser);
+            if (foundUser.role === 'Mentor'){
+                res.redirect('/mentorland');
+            } else if (foundUser.role === 'Mentee'){
+                res.redirect('/menteeland');
+            }
+        }
+    });
 });
 
-router.get('/menteeland', function(req, res){
-    res.render('menteeLand');
+router.get('/mentorland', middleware.isLoggedIn, function(req, res){
+    // User.findById(req.user._id, function(err, foundUser){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         if (foundUser.role === "Mentor"){
+    //             res.render('mentorLand', foundUser);
+    //         } else {
+    //             res.redirect('/menteeland');
+    //         }
+    //     }
+    // });
+    Mentor.findOne({ username: req.user.username }, function(err, foundMentor){
+        if(foundMentor === null){
+            console.log(err);
+        } else {
+            console.log(req.user._id);
+            console.log(foundMentor);
+            res.render('mentorLand', {mentor: foundMentor});
+        }
+    });
+});
+
+router.get('/menteeland', middleware.isLoggedIn, function(req, res){
+    // User.findById(req.user._id, function(err, foundUser){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         if (foundUser.role === "Mentee"){
+    //             res.render('menteeLand', foundUser);
+    //         } else {
+    //             res.redirect('/mentorland');
+    //         }
+    //     }
+    // });
+    Mentee.findOne({ username: req.user.username }, function(err, foundMentee){
+        if(foundMentee === null){
+            console.log(err);
+        } else {
+            console.log(req.user._id);
+            console.log(foundMentee);
+            res.render('menteeLand', {mentee: foundMentee});
+        }
+    });
 });
 
 router.get('/register', function(req, res){
@@ -84,11 +137,13 @@ router.post('/mentorregister', function(req, res){
        } else {
            mentor.user.id = req.user._id;
            mentor.user.username = req.user.username;
+           mentor.username = req.user.username;
            mentor.accomplishment1 = req.body.accomp1;
            mentor.accomplishment2 = req.body.accomp2;
            mentor.accomplishment3 = req.body.accomp3;
            mentor.numMentees = 0;
            mentor.mentees = [];
+           console.log(mentor);
            mentor.save();
            res.redirect('/mentorland');
        }
@@ -107,13 +162,16 @@ router.post('/menteeregister', function(req, res){
        } else {
            mentee.user.id = req.user._id;
            mentee.user.username = req.user.username;
+           mentee.username = req.user.username;
            mentee.goal1 = req.body.goal1;
            mentee.goal2 = req.body.goal2;
            mentee.goal3 = req.body.goal3;
-           mentee.numMentors = 0;
+           mentee.numMentees = 0;
            mentee.mentors = [];
-           mentee.save;
-           res.redirect('menteeLand')
+           mentee.bucketList = [];
+           console.log(mentee);
+           mentee.save();
+           res.redirect('/menteeland');
        }
     });
 });
@@ -124,22 +182,20 @@ router.get('/login', function(req, res){
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/mentorland",
+        successRedirect: "/theland",
         failureRedirect: "/login"
     }), function(req, res){
-});
-
-router.get('/mentorhome', function(req, res){
-    res.render('');
-});
-
-router.get('/menteehome', function(req, res){
-    res.render('');
 });
 
 router.get("/logout", function(req, res){
    req.logout();
    res.redirect("back");
+});
+
+router.get('/newmentorship', function(req, res){
+//   Mentor.findById();
+//   Mentee.findById();
+//   if()
 });
 
 module.exports = router;
