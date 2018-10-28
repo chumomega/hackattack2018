@@ -3,6 +3,7 @@ const express    = require('express'),
       User       = require('../models/user'),
       Mentor     = require('../models/mentor'),
       Mentee     = require('../models/mentee'),
+      middleware = require('../middleware'),
       passport   = require('passport');
 
 router.get('/', function(req, res){
@@ -13,7 +14,8 @@ router.get('/aboutus', function(req, res){
     res.render('aboutus');
 });
 
-router.get('/mentorland', function(req, res){
+router.get('/mentorland', middleware.isLoggedIn, function(req, res){
+    Mentor.findById(req.user._id, )
     res.render('mentorLand');
 });
 
@@ -29,7 +31,7 @@ router.post('/register', function(req, res){
     if (req.body.role === "Mentor"){
         let newUser = new User(
             {
-                username: req.body.name, 
+                username: req.body.username, 
                 email: req.body.email,
                 city: req.body.city,
                 state: req.body.state,
@@ -49,7 +51,7 @@ router.post('/register', function(req, res){
     } else if (req.body.role === "Mentee") {
         let newUser = new User(
             {
-                username: req.body.name, 
+                username: req.body.username, 
                 email: req.body.email,
                 city: req.body.city,
                 state: req.body.state,
@@ -122,7 +124,7 @@ router.get('/login', function(req, res){
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/",
+        successRedirect: "/mentorland",
         failureRedirect: "/login"
     }), function(req, res){
 });
@@ -133,6 +135,11 @@ router.get('/mentorhome', function(req, res){
 
 router.get('/menteehome', function(req, res){
     res.render('');
+});
+
+router.get("/logout", function(req, res){
+   req.logout();
+   res.redirect("back");
 });
 
 module.exports = router;
