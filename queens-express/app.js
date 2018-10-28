@@ -4,9 +4,9 @@ const express         = require('express'),
       methodOverride  = require('method-override'),
       bodyParser      = require('body-parser'),
       passport        = require('passport');
-      
-let port = process.env.PORT || 8000,
-    indexRoutes = require('./routes/index');
+
+      let port = process.env.PORT || 8000,
+      indexRoutes = require('./routes/api');
       
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -24,3 +24,5 @@ app.use(indexRoutes);
 app.listen(port, process.env.IP, function(){
    console.log('Queens Mentor has started.'); 
 });
+
+
