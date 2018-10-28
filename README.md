@@ -10,6 +10,7 @@ This is the application for Queens College Hackattack 2018.
 # HOW TO EJS
     create new html files with .ejs extension
     express will read files from the views directory and .ejs ending does not need to be added when routing
+<<<<<<< HEAD
     allows us to include embedded javascript in our html
     
 # HOW TO MONGODB
@@ -25,3 +26,7 @@ This is the application for Queens College Hackattack 2018.
         chmod a+x mongod
     Run this command in the root directory in a separate terminal from your working one:
         ./mongod
+=======
+    allows us to include embedded javascript in our html.
+    
+>>>>>>> e41c1aad5e36a089d029a2057980b0b58217c564
