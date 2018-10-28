@@ -26,6 +26,15 @@ hr {
      margin: 0 auto;
 }
 
+.mini-desc {
+    background-color: rgba(115, 25, 255, 0.3);
+}
+
+.nav-button {
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
 #a-queen {
 
 }
