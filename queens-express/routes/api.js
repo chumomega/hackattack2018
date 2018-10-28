@@ -22,11 +22,11 @@ router.post('/login', function(req, res){
 });
 
 router.get('/mentorhome', function(req, res){
-    res.render('');
+    res.render('mentorLand');
 });
 
 router.get('/menteehome', function(req, res){
-    res.render('');
+    res.render('menteeLand');
 });
 
 module.exports = router;
