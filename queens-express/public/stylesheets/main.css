@@ -1,0 +1,20 @@
+.accomp:hover {
+    background-color: rgba(0, 0, 230, 0.8);
+}
+
+.goal:hover {
+    background-color: rgba(0, 0, 230, 0.8);
+}
+
+.jumbotron.dash {
+    background-color: #ffffff;
+    border: 0.05rem solid rgba(115, 25, 205, 1);
+    border-radius: 1.8rem;
+    padding: 2rem 2rem;
+}
+
+#helloh1 {
+    margin-top: 5vh;
+    margin-bottom: 7vh;
+    text-align: center;
+}

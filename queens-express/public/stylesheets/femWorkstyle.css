@@ -21,6 +21,10 @@ hr {
     margin-top: 3.5%;
 }
 
+.accomp:hover {
+    background-color: rgb(0, 0, 230);
+}
+
 .content {
     text-align: center;
      margin: 0 auto;
