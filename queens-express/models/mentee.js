@@ -8,15 +8,16 @@ let menteeSchema = mongoose.Schema({
       },
       username: String
    },
+   username: String,
    goal1: String,
    goal2: String,
    goal3: String,
+   numMentors: Number,
    bucketList: [
        {
            listItem: String,
        }
-       ],
-   numMentors: Number,
+   ],
    mentors: [
        {
          type: mongoose.Schema.Types.ObjectId,
