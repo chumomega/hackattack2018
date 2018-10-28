@@ -3,10 +3,23 @@ const express         = require('express'),
       ejs             = require('ejs'),
       methodOverride  = require('method-override'),
       bodyParser      = require('body-parser'),
-      passport        = require('passport');
+      passport        = require('passport'),
+      mongoose        = require('mongoose'),
+      localStrategy   = require('passport-local'),
+      User            = require('./models/user');
+      
+let port = process.env.PORT || 8000,
+    indexRoutes = require('./routes/index');
+    
+let url = process.env.DATABASEURL || "mongodb://" + process.env.IP + "/the_black_code"
+// let url = "mongodb://jsurena:jean18@ds111993.mlab.com:11993/the_black_code";
+mongoose.connect(url, { useNewUrlParser: true });
+var db = mongoose.connection;
 
-      let port = process.env.PORT || 8000,
-      indexRoutes = require('./routes/api');
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function(){
+    console.log("Database connectivity established.");
+});
       
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -18,6 +31,12 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(indexRoutes);
 
