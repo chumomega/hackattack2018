@@ -49,7 +49,7 @@ router.post('/register', function(req, res){
     } else if (req.body.role === "Mentee") {
         let newUser = new User(
             {
-                username: req.body.username, 
+                username: req.body.name, 
                 email: req.body.email,
                 city: req.body.city,
                 state: req.body.state,
@@ -58,7 +58,8 @@ router.post('/register', function(req, res){
             });
         User.register(newUser, req.body.password, function(err, user){
             if(err){
-                return res.render("register", {"error": err.message});
+                console.log(err);
+                return res.render("register");
             }
             passport.authenticate("local")(req, res, function(){
                 res.redirect('/menteeregister');
@@ -119,8 +120,11 @@ router.get('/login', function(req, res){
     res.render('login');
 });
 
-router.post('/login', function(req, res){
-    
+router.post("/login", passport.authenticate("local", 
+    {
+        successRedirect: "/",
+        failureRedirect: "/login"
+    }), function(req, res){
 });
 
 router.get('/mentorhome', function(req, res){
