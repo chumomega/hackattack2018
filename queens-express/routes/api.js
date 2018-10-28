@@ -9,6 +9,10 @@ router.get('/register', function(req, res){
     res.render('register');
 });
 
+router.get('/aboutus', function(req, res){
+    res.render('aboutus');
+});
+
 router.post('/register', function(req, res){
     
 });
