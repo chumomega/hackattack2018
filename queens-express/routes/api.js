@@ -9,6 +9,10 @@ router.get('/register', function(req, res){
     res.render('register');
 });
 
+router.get('/aboutus', function(req, res){
+    res.render('aboutus');
+});
+
 router.post('/register', function(req, res){
     
 });
@@ -22,11 +26,11 @@ router.post('/login', function(req, res){
 });
 
 router.get('/mentorhome', function(req, res){
-    res.render('');
+    res.render('mentorLand');
 });
 
 router.get('/menteehome', function(req, res){
-    res.render('');
+    res.render('menteeLand');
 });
 
 module.exports = router;

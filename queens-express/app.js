@@ -40,6 +40,15 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(indexRoutes);
 
+
+function addUser(){
+
+}
+
+function loginUser(){
+
+}
+
 app.listen(port, process.env.IP, function(){
    console.log('Queens Mentor has started.'); 
 });

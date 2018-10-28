@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    background-image: url("https://source.unsplash.com/dtwLcjcxrxg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    display: compact;
+    font: 18px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+h1 {
+    padding-top: 4vh;
+    text-align: center;
+    margin: 0 auto;
+}
+
+hr {
+    width: 75%;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 3.5%;
+}
+
+.content {
+    text-align: center;
+     margin: 0 auto;
+}
+
+#a-queen {
+
+}
+
+#welcome{
+    padding-top: 15%;
+    margin-top: 4vh;
+    margin-bottom: 0;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    font-size: 15vh;
+    text-align: center;
+}
+
+#first-div{
+    padding: 2vh;
+    margin: 4vh;
+}
+
+#blurb {
+    margin-top: 2vh;
+
+   text-align: center;
+   padding: 15%;
+}
